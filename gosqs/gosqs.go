@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/p4tin/goaws/common"
+	"github.com/splagemann/goaws/common"
 	"log"
 )
 

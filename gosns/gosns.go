@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/p4tin/goaws/common"
-	sqs "github.com/p4tin/goaws/gosqs"
+	"github.com/splagemann/goaws/common"
+	sqs "github.com/splagemann/goaws/gosqs"
 )
 
 type SnsErrorType struct {
