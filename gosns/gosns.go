@@ -328,7 +328,7 @@ func Publish(w http.ResponseWriter, req *http.Request) {
 				var body_map map[string]string
 				{
 					// reuse the CreateMessageBody and append our additional fields
-					body_raw, _ := CreateMessageBody(messageBody, topicArn, subs.Protocol, messageStructure)
+					body_raw, _ := CreateMessageBody(messageBody, subject, topicArn, subs.Protocol, messageStructure)
 					json.Unmarshal(body_raw, &body_map)
 
 					body_map["Signature"] = "Fake"

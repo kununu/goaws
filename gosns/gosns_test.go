@@ -333,6 +333,7 @@ func TestPublish_POST_http_endpoint(t *testing.T) {
 		form := url.Values{}
 		form.Add("TopicArn", TopicArn)
 		form.Add("Message", "TestMessage1")
+		form.Add("Subject", "TestSubject1")
 		req.PostForm = form
 
 		// We create a ResponseRecorder (which satisfies http.ResponseWriter) to record the response.
@@ -394,6 +395,7 @@ func TestPublish_POST_http_endpoint(t *testing.T) {
 	// verify that these keys exist and check that the data is not empty
 	for _, f := range []string{"MessageId",
 				"TopicArn",
+				"Subject",
 				"Message",
 				"Timestamp",
 				"SignatureVersion",
