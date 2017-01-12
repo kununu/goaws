@@ -13,6 +13,8 @@ import (
 
 	"github.com/p4tin/goaws/common"
 	sqs "github.com/p4tin/goaws/gosqs"
+
+	"bytes"
 )
 
 type SnsErrorType struct {
@@ -45,6 +47,7 @@ type (
 
 const (
 	ProtocolSQS Protocol = "sqs"
+	ProtocolHTTP Protocol = "http"
 	ProtocolDefault Protocol = "default"
 )
 
@@ -318,6 +321,43 @@ func Publish(w http.ResponseWriter, req *http.Request) {
 				} else {
 					common.LogMessage(fmt.Sprintf("%s: Queue %s does not exits, message discarded\n", time.Now().Format("2006-01-02 15:04:05"), queueName))
 				}
+			} else if Protocol(subs.Protocol) == ProtocolHTTP {
+				/*
+				 * The Generated JSON response
+				 */
+				var body_map map[string]string
+				{
+					// reuse the CreateMessageBody and append our additional fields
+					body_raw, _ := CreateMessageBody(messageBody, subject, topicArn, subs.Protocol, messageStructure)
+					json.Unmarshal(body_raw, &body_map)
+
+					body_map["Signature"] = "Fake"
+					body_map["SignatureVersion"] = "1"
+					body_map["SigningCertURL"] = "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem"
+					body_map["UnsubscribeURL"] = "" // TODO
+
+				}
+
+				body, _ := json.Marshal(body_map)
+				req, err := http.NewRequest(http.MethodPost, subs.EndPoint, bytes.NewReader(body))
+				if err != nil {
+					log.Println("failed: ", subs.EndPoint, " with ", err)
+				}
+
+				client := &http.Client{}
+				req.Header.Add("Content-Type", "text/plain; charset=UTF-8")
+				req.Header.Add("User-Agent", "Amazon Simple Notification Service Agent")
+				/* Pull the headers from our content to guarentee they are identical */
+				req.Header.Add("x-amz-sns-message-type", body_map["Type"])
+				req.Header.Add("x-amz-sns-message-id", body_map["MessageId"])
+				req.Header.Add("x-amz-sns-topic-arn", body_map["TopicArn"])
+				// req.Header.Add("x-amz-sns-subscription-arn", "TODO")
+
+				resp, err := client.Do(req)
+				if err != nil {
+					log.Println("request failed to ", subs.EndPoint, " with ", err)
+				}
+				common.LogMessage(fmt.Sprintf("%s: Topic: %s, EndPoint: %s, Response: %s\n", time.Now().Format("2006-01-02 15:04:05"), topicName, subs.EndPoint, resp.Status))
 			}
 		}
 	} else {
@@ -338,7 +378,7 @@ type TopicMessage struct {
 	TopicArn  string
 	Subject   string
 	Message   string
-	TimeStamp string
+	Timestamp string
 }
 
 func CreateMessageBody(msg string, subject string, topicArn string, protocol string, messageStructure string) ([]byte, error) {
@@ -361,7 +401,7 @@ func CreateMessageBody(msg string, subject string, topicArn string, protocol str
 	message.MessageId = msgId
 	message.TopicArn = topicArn
 	t := time.Now()
-	message.TimeStamp = fmt.Sprintln(t.Format("2006-01-02T15:04:05:001Z"))
+	message.Timestamp = fmt.Sprintln(t.Format("2006-01-02T15:04:05:001Z"))
 
 	byteMsg, _ := json.Marshal(message)
 	return byteMsg, nil
