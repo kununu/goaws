@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/p4tin/goaws/common"
-	sqs "github.com/p4tin/goaws/gosqs"
+	"github.com/kununu/goaws/common"
+	sqs "github.com/kununu/goaws/gosqs"
 
 	"bytes"
 )

@@ -2,8 +2,8 @@ package conf
 
 import (
 	"testing"
-	"github.com/p4tin/goaws/gosns"
-	"github.com/p4tin/goaws/gosqs"
+	"github.com/kununu/goaws/gosns"
+	"github.com/kununu/goaws/gosqs"
 )
 
 func TestConfig_NoQueuesOrTopics(t *testing.T) {

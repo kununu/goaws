@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"os"
 
-	sns "github.com/p4tin/goaws/gosns"
-	sqs "github.com/p4tin/goaws/gosqs"
-	"github.com/p4tin/goaws/conf"
+	sns "github.com/kununu/goaws/gosns"
+	sqs "github.com/kununu/goaws/gosqs"
+	"github.com/kununu/goaws/conf"
 )
 
 func BadRequest(w http.ResponseWriter, req *http.Request) {

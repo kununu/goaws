@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/p4tin/goaws",
+	"ImportPath": "github.com/kununu/goaws",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v74",
 	"Packages": [
