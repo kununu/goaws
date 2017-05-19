@@ -15,7 +15,7 @@ func main() {
 	var filename string
 	var debug bool
 	flag.StringVar(&filename, "config", "", "config file location + name")
-	flag.BoolVar(&debug, "debug", false, "debug log level (default Warning)")
+	flag.BoolVar(&debug, "debug", true, "debug log level (default Warning)")
 	flag.Parse()
 
 	log.SetFormatter(&log.JSONFormatter{})
