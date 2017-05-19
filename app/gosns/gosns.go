@@ -10,13 +10,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kununu/goaws/common"
-	sqs "github.com/kununu/goaws/gosqs"
+	sqs "github.com/kununu/goaws/app/gosqs"
 
 	"bytes"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/p4tin/goaws/app"
+	"github.com/kununu/goaws/app"
+	"github.com/kununu/goaws/app/common"
 )
 
 type SnsErrorType struct {
@@ -48,12 +48,8 @@ type (
 )
 
 const (
-<<<<<<< HEAD:gosns/gosns.go
 	ProtocolSQS Protocol = "sqs"
 	ProtocolHTTP Protocol = "http"
-=======
-	ProtocolSQS     Protocol = "sqs"
->>>>>>> upstream/master:app/gosns/gosns.go
 	ProtocolDefault Protocol = "default"
 )
 

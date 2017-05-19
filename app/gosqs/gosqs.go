@@ -13,8 +13,8 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/gorilla/mux"
-	"github.com/kununu/goaws/common"
-	"github.com/p4tin/goaws/app"
+	"github.com/kununu/goaws/app"
+	"github.com/kununu/goaws/app/common"
 )
 
 type SqsErrorType struct {
@@ -87,7 +87,7 @@ func ListQueues(w http.ResponseWriter, req *http.Request) {
 func CreateQueue(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/xml")
 	queueName := req.FormValue("QueueName")
-	queueUrl := "http://" + req.Host + "/queue/" + queueName
+	queueUrl := "http://" + req.Host + "/000000000000/" + queueName
 
 	if _, ok := SyncQueues.Queues[queueName]; !ok {
 		log.Println("Creating Queue:", queueName)

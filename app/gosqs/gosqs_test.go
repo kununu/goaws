@@ -83,7 +83,7 @@ func TestSendQueue_POST_NonExistant(t *testing.T) {
 
 	form := url.Values{}
 	form.Add("Action", "SendMessage")
-	form.Add("QueueUrl", "http://localhost:4100/queue/NON-EXISTANT")
+	form.Add("QueueUrl", "http://localhost:4100/000000000000/NON-EXISTANT")
 	form.Add("MessageBody", "Test123")
 	form.Add("Version", "2012-11-05")
 	req.PostForm = form

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/p4tin/goaws/app/router"
+	"github.com/kununu/goaws/app/router"
 )
 
 // Server is a fake SQS / SNS server for testing purposes.

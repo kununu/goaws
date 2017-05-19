@@ -123,7 +123,7 @@ func TestSubscribehandler_POST_Success(t *testing.T) {
 	form := url.Values{}
 	form.Add("TopicArn", "arn:aws:sns:local:000000000000:UnitTestTopic1")
 	form.Add("Protocol", "sqs")
-	form.Add("Endpoint", "http://localhost:4100/queue/noqueue1")
+	form.Add("Endpoint", "http://localhost:4100/000000000000/noqueue1")
 	req.PostForm = form
 
 	// We create a ResponseRecorder (which satisfies http.ResponseWriter) to record the response.

@@ -36,7 +36,7 @@ public class SnsSample {
             }
             System.out.println();
 
-            SubscribeResult sr = sns.subscribe(new SubscribeRequest(topicArn, "sqs", "http://localhost:4100/queue/local-queue1"));
+            SubscribeResult sr = sns.subscribe(new SubscribeRequest(topicArn, "sqs", "http://localhost:4100/000000000000/local-queue1"));
             System.out.println("SubscriptionArn: " + sr.getSubscriptionArn());
             System.out.println();
 

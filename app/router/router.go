@@ -7,8 +7,8 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/gorilla/mux"
-	sns "github.com/p4tin/goaws/app/gosns"
-	sqs "github.com/p4tin/goaws/app/gosqs"
+	sns "github.com/kununu/goaws/app/gosns"
+	sqs "github.com/kununu/goaws/app/gosqs"
 )
 
 // New returns a new router
@@ -16,7 +16,7 @@ func New() http.Handler {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", actionHandler).Methods("GET", "POST")
-	r.HandleFunc("/queue/{queueName}", actionHandler).Methods("GET", "POST")
+	r.HandleFunc("/000000000000/{queueName}", actionHandler).Methods("GET", "POST")
 
 	return r
 }

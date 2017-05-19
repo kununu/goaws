@@ -62,7 +62,7 @@ print()
 
 
 ## Subscribe a Queue to a Topic in Python
-subscription1 = conn.subscribe(topicarn['Result']['TopicArn'], "sqs", "http://localhost:4100/queue/local-queue2")
+subscription1 = conn.subscribe(topicarn['Result']['TopicArn'], "sqs", "http://localhost:4100/000000000000/local-queue2")
 print(subscription1['Result']['SubscriptionArn'])
 print()
 print()

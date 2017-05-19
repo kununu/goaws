@@ -181,6 +181,12 @@
 			"revisionTime": "2017-01-30T11:31:45Z"
 		},
 		{
+			"checksumSHA1": "x/C9sWJ33glBGKgGvb8VvUQvR8s=",
+			"path": "github.com/sirupsen/logrus",
+			"revision": "5e5dc898656f695e2a086b8e12559febbfc01562",
+			"revisionTime": "2017-05-15T10:45:16Z"
+		},
+		{
 			"checksumSHA1": "JXUVA1jky8ZX8w09p2t5KLs97Nc=",
 			"path": "github.com/stretchr/testify/assert",
 			"revision": "4d4bfba8f1d1027c4fdbe371823030df51419987",
@@ -191,7 +197,13 @@
 			"path": "github.com/stretchr/testify/require",
 			"revision": "4d4bfba8f1d1027c4fdbe371823030df51419987",
 			"revisionTime": "2017-01-30T11:31:45Z"
+		},
+		{
+			"checksumSHA1": "4owIzLmRdrdy3H3j/OD8UMJD5ZE=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "a2e06a18b0d52d8cb2010e04b372a1965d8e3439",
+			"revisionTime": "2017-04-21T23:22:19Z"
 		}
 	],
-	"rootPath": "github.com/p4tin/goaws"
+	"rootPath": "github.com/kununu/goaws"
 }
