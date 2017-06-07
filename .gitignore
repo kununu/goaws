@@ -1,8 +1,11 @@
 .idea
 
+vendor/github.com/
+vendor/golang.org/
+
 goaws
 goaws_linux_amd64
 
-venv/
-logs/
+app/cmd/cmd
+
 *.log
